@@ -2,7 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "Mongo Express API",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "nodemon app.js"
   },

@@ -1,0 +1,36 @@
+version: '3.4'
+
+services:
+  backend:
+    container_name: backend
+    restart: unless-stopped
+    build: .
+    ports:
+      - '8080:8080'
+    volumes:
+      - .:/usr/src/app
+    networks:
+      - internal
+    depends_on:
+      - mongodb
+    links:
+      - mongodb
+
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_DATABASE: node-app
+    ports:
+      - '27017:27017'
+    volumes:
+      - data:/data/db
+    networks:
+      - internal
+
+networks:
+  internal:
+
+volumes:
+  data:
